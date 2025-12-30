@@ -2,10 +2,13 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
+local cssSacks = "models/props/cs_militia/sacks.mdl"
+local barleyModel = util.IsValidModel( cssSacks ) and cssSacks or "models/props_junk/metal_paintcan001a.mdl"
+local barleyScale = util.IsValidModel( cssSacks ) and 0.45 or 0.6
+
 function ENT:Initialize()
-	self:SetModel ( "models/alcoholmod/barley.mdl" )
-	self:SetMaterial( "models/player/shared/gold_player", true )
-	self:SetModelScale( 7 )
+	self:SetModel ( barleyModel )
+	self:SetModelScale( barleyScale )
 	self:PhysicsInit (SOLID_VPHYSICS)
 	self:SetMoveType(MOVETYPE_VPHYSICS)
 	self:SetSolid(SOLID_VPHYSICS)

@@ -3,12 +3,11 @@ AddCSLuaFile("shared.lua")
 include("shared.lua")
 
 function ENT:Initialize()
-    self:SetModel ( "models/grapes/grapes.mdl" )
-    self:SetMaterial( "mofoak", true )
-    self:PhysicsInit (SOLID_VPHYSICS)
-    self:SetMoveType(MOVETYPE_VPHYSICS)
-    self:SetSolid(SOLID_VPHYSICS)
-    self:SetModelScale ( 2, 0 )
+	self:SetModel ( "models/props_junk/watermelon01.mdl" )
+	self:PhysicsInit (SOLID_VPHYSICS)
+	self:SetMoveType(MOVETYPE_VPHYSICS)
+	self:SetSolid(SOLID_VPHYSICS)
+	self:SetModelScale ( 0.35, 0 )
 end
 
 function ENT:SpawnFunction (ply, tr)

@@ -3,8 +3,11 @@ AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 util.AddNetworkString( "StartAMGinEffect" )
 
+local cssGinBottle = "models/props/cs_militia/bottle01.mdl"
+local ginBottleModel = util.IsValidModel( cssGinBottle ) and cssGinBottle or "models/props_junk/GlassBottle01a.mdl"
+
 function ENT:Initialize( )
-	self:SetModel( "models/weapons/w_models/w_bottle.mdl" )
+	self:SetModel( ginBottleModel )
 	self:PhysicsInit( SOLID_VPHYSICS )
 	self:SetMoveType( MOVETYPE_VPHYSICS )
 	self:SetSolid( SOLID_VPHYSICS )

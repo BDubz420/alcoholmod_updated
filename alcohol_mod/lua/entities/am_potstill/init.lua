@@ -2,6 +2,9 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
+local cssGinBottle = "models/props/cs_militia/bottle01.mdl"
+local ginModel = util.IsValidModel( cssGinBottle ) and cssGinBottle or "models/props_junk/GlassBottle01a.mdl"
+
 function ENT:Initialize( )
 	self:SetModel( "models/gibs/airboat_broken_engine.mdl" )
 	self:SetUseType( SIMPLE_USE )
@@ -23,21 +26,21 @@ function ENT:SpawnFunction( _, tr )
 end
 
 function ENT:Think( )
-	if ( not self.nextPotStill or CurTime( ) >= self.nextPotStill ) and ( self:GetPotStillTimer( ) > 0 ) then
-		self:SetPotStillTimer( self:GetPotStillTimer( ) - 1 )
-		self.nextPotStill = CurTime( ) + 1
-	end
+        if ( not self.nextPotStill or CurTime( ) >= self.nextPotStill ) and ( self:GetPotStillTimer( ) > 0 ) then
+                self:SetPotStillTimer( self:GetPotStillTimer( ) - 1 )
+                self.nextPotStill = CurTime( ) + 1
+        end
 end
 
 function ENT:Use( )
-	if self:GetPotStillTimer( ) == 0 then
-		self:SetFilled( false )
-		ginbottle = ents.Create( "am_ginbottle" )
-		ginbottle:SetPos( self:GetPos( ) + self:GetUp( ) * 12 )
-		ginbottle:SetAngles( self:GetAngles( ) )
-		ginbottle:Spawn( )
-		ginbottle:GetPhysicsObject( ):SetVelocity( self:GetUp( ) * 2 )
-		ginbottle:SetModel( "models/weapons/w_models/w_bottle.mdl" )
-		self:SetPotStillTimer( -1 )
-	end
+        if self:GetPotStillTimer( ) == 0 then
+                self:SetFilled( false )
+                ginbottle = ents.Create( "am_ginbottle" )
+                ginbottle:SetPos( self:GetPos( ) + self:GetUp( ) * 12 )
+                ginbottle:SetAngles( self:GetAngles( ) )
+                ginbottle:Spawn( )
+                ginbottle:GetPhysicsObject( ):SetVelocity( self:GetUp( ) * 2 )
+                ginbottle:SetModel( ginModel )
+                self:SetPotStillTimer( -1 )
+        end
 end
