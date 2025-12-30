@@ -27,23 +27,23 @@ function ENT:Draw( )
 	ang:RotateAroundAxis( ang:Up( ), 90 )
 	ang:RotateAroundAxis( ang:Forward( ), 90 )
 
-	if LocalPlayer( ):GetPos( ):Distance( self:GetPos( ) ) < 256 and self:GetNWInt( "time" ) < 60 and self:GetNWInt( "time" ) > 0 then
-		cam.Start3D2D( pos + ang:Up( ), Angle( 1, LocalPlayer( ):EyeAngles( ).y - 90, 90 ), .25 )
-		draw.DrawText( "Time Left:  " .. math.Round( self:GetNWInt( "time" ) ) .. " sec", "WineFont", 0, -170, Color( 255, 0, 0, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color( 25, 25, 25, 100 ) )
-		cam.End3D2D( )
-	end
+        if LocalPlayer( ):GetPos( ):Distance( self:GetPos( ) ) < 256 and self:GetNWInt( "time" ) < 60 and self:GetNWInt( "time" ) > 0 then
+                cam.Start3D2D( pos + ang:Up( ), Angle( 1, LocalPlayer( ):EyeAngles( ).y - 90, 90 ), .25 )
+                draw.WordBox( 6, 0, -170, "Time Left:  " .. math.Round( self:GetNWInt( "time" ) ) .. " sec", "WineFont", Color( 0, 0, 0, 150 ), Color( 255, 255, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
+                cam.End3D2D( )
+        end
 
-	if LocalPlayer( ):GetPos( ):Distance( self:GetPos( ) ) < 256 and self:GetNWInt( "status" ) == 2 and self:GetNWInt( "must" ) ~= 0 then
-		cam.Start3D2D( pos + ang:Up( ), Angle( 1, LocalPlayer( ):EyeAngles( ).y - 90, 90 ), .25 )
-		draw.DrawText( "Press 'E' On Me to remove must", "WineFont", 0, -170, Color( 255, 0, 0, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color( 25, 25, 25, 100 ) )
-		cam.End3D2D( )
-	end
+        if LocalPlayer( ):GetPos( ):Distance( self:GetPos( ) ) < 256 and self:GetNWInt( "status" ) == 2 and self:GetNWInt( "must" ) ~= 0 then
+                cam.Start3D2D( pos + ang:Up( ), Angle( 1, LocalPlayer( ):EyeAngles( ).y - 90, 90 ), .25 )
+                draw.WordBox( 6, 0, -170, "Press 'E' On Me to remove must", "WineFont", Color( 0, 0, 0, 150 ), Color( 255, 255, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
+                cam.End3D2D( )
+        end
 
-	if LocalPlayer( ):GetPos( ):Distance( self:GetPos( ) ) < 256 and self:GetNWInt( "must" ) == 0 then
-		cam.Start3D2D( pos + ang:Up( ), Angle( 1, LocalPlayer( ):EyeAngles( ).y - 90, 90 ), .25 )
-		draw.DrawText( "Hit E on me to produce wine.", "WineFont", 0, -170, Color( 255, 0, 0, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color( 25, 25, 25, 100 ) )
-		cam.End3D2D( )
-	end
+        if LocalPlayer( ):GetPos( ):Distance( self:GetPos( ) ) < 256 and self:GetNWInt( "must" ) == 0 then
+                cam.Start3D2D( pos + ang:Up( ), Angle( 1, LocalPlayer( ):EyeAngles( ).y - 90, 90 ), .25 )
+                draw.WordBox( 6, 0, -170, "Hit E on me to produce wine.", "WineFont", Color( 0, 0, 0, 150 ), Color( 255, 255, 255 ), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER )
+                cam.End3D2D( )
+        end
 end
 
 net.Receive( "grapecrusheropen", function()
