@@ -3,8 +3,11 @@ AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 util.AddNetworkString( "StartAMWineEffect" )
 
+local cssWineBottle = "models/props/cs_militia/bottle02.mdl"
+local wineBottleModel = util.IsValidModel( cssWineBottle ) and cssWineBottle or "models/props_junk/GlassBottle01a.mdl"
+
 function ENT:Initialize( )
-	self:SetModel( "models/props/cs_militia/bottle01.mdl" )
+	self:SetModel( wineBottleModel )
 	self:PhysicsInit( SOLID_VPHYSICS )
 	self:SetMoveType( MOVETYPE_VPHYSICS )
 	self:SetSolid( SOLID_VPHYSICS )

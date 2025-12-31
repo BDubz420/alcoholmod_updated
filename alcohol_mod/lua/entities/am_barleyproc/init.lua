@@ -3,8 +3,8 @@ AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
 function ENT:Initialize()
-	self:SetModel ( "models/alcoholmod/barleyproc.mdl" )
-	self:SetMaterial( "models/props_c17/FurnitureMetal001a", true )
+	self:SetModel ( "models/props_wasteland/laundry_washer003.mdl" )
+	self:SetModelScale( 0.9 )
 	self:PhysicsInit (SOLID_VPHYSICS)
 	self:SetMoveType(MOVETYPE_VPHYSICS)
 	self:SetSolid(SOLID_VPHYSICS)
@@ -26,8 +26,7 @@ function ENT:Use( _, caller )
 		grain:SetAngles( self:GetAngles() )
 		grain:Spawn()
 		grain:GetPhysicsObject():SetVelocity( self:GetUp() * 2 )
-		grain:SetModel( "models/props_granary/grain_sack.mdl" )
 		caller:SetNWInt( "Barley", caller:GetNWInt( "Barley" ) - 1 )
 		return false
 	end
-end
+	end
